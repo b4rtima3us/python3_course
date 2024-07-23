@@ -12,7 +12,7 @@
             {% if item.quantity == 0 %}
                 <li><a href="{{ item.id }}">{{ item.name }}</a>: Товар отсутствует</li>
             {% else %}
-                <li><a href="{{ item.id }}">{{ item.name }}</a>: {{ item.quantity }}</li>
+                <li><a href="{{ item.id }}">{{ item.name }}</a>: {{ item.count }}</li>
             {% endif %}
         {% endfor %}
     </ol>

@@ -18,7 +18,7 @@ def render_main(request):
     <h1>"Изучаем django"</h1>
     <strong>Автор</strong>: <i>{settings.USER_FULL_NAME}</i>
     """
-    return HttpResponse(text)
+    return render(request, 'index.html')
 
 
 def render_about(request):

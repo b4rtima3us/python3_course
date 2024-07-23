@@ -42,9 +42,11 @@ def render_items(request):
 
 
 def render_item_by_id(request, item_id):
+    item = next((i for i in items if i['id'] == item_id), None)
     context = {
-        'title': 'Item',
-        'item_id': item_id,
-        'items': items
+        'title': 'Items',
+        'item': item,
+        'item_id': item_id
     }
     return render(request, 'item.html', context)
+

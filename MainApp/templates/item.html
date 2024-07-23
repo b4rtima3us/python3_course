@@ -6,13 +6,11 @@
     {% include "menu.html"  %}
 </head>
 <body>
-    {% for item in items %}
-        {% if item.id == item_id %}
-            <p>{{ item.name }}: {{ item.quantity }}</p>
-        {% endif %}
-
-<!--    Товар с id={{item_id}} не найден-->
-    {% endfor %}
+    {% if item %}
+        <p>{{ item.name }}: {{ item.quantity }}</p>
+    {% else %}
+        <p>Товар с id={{item_id}} не найден</p>
+    {% endif %}
     <a href="/items">Назад к списку товаров</a>
 </body>
 </html>

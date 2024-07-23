@@ -1,15 +1,9 @@
+from MainApp.models import Item
 from MainApp import settings
 from django.shortcuts import render, HttpResponse
+from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
-
-items = [
-   {"id": 1, "name": "Кроссовки abibas", "quantity": 5},
-   {"id": 2, "name": "Куртка кожаная", "quantity": 2},
-   {"id": 5, "name": "Coca-cola 1 литр", "quantity": 12},
-   {"id": 7, "name": "Картофель фри", "quantity": 0},
-   {"id": 8, "name": "Кепка", "quantity": 124},
-]
 
 
 def render_main(request):
@@ -34,6 +28,7 @@ def render_about(request):
 
 
 def render_items(request):
+    items = Item.objects.all()
     context = {
         'title': 'Items',
         'items': items
@@ -42,16 +37,17 @@ def render_items(request):
 
 
 def render_item_by_id(request, item_id):
-    item = next((i for i in items if i['id'] == item_id), None)
-    if item:
+    try:
+        item = Item.objects.get(id=item_id)
         context = {
             'title': 'Item',
             'item': item
         }
         return render(request, 'item.html', context)
-    context = {
-        'title': 'Error',
-        'item': f'Товар с id={item_id} не найден'
-    }
-    return render(request, 'errors.html', context)
+    except ObjectDoesNotExist:
+        context = {
+            'title': 'Error',
+            'item': f'Товар с id={item_id} не найден'
+        }
+        return render(request, 'errors.html', context)
 

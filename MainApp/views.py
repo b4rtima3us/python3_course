@@ -1,5 +1,4 @@
 from MainApp import settings
-
 from django.shortcuts import render, HttpResponse
 
 # Create your views here.
@@ -35,20 +34,17 @@ def render_about(request):
 
 
 def render_items(request):
-    table = '<ol type="1">'
-    for i in items:
-        table += f'<li><a href="{i["id"]}">{i["name"]}</a> : {i["quantity"]}</li>'
-    table += '</ol>'
-    return HttpResponse(table)
+    context = {
+        'title': 'Items',
+        'items': items
+    }
+    return render(request, 'items.html', context)
 
 
 def render_item_by_id(request, item_id):
-    item = next((i for i in items if i['id'] == item_id), None)
-    if item:
-        response = f"""
-        {item['name']}: {item['quantity']}
-        """
-    else:
-        response = f'Товар с id={item_id} не найден'
-    response += f'<br><a href="/items">Назад к списку товаров</a>'
-    return HttpResponse(response)
+    context = {
+        'title': 'Item',
+        'item_id': item_id,
+        'items': items
+    }
+    return render(request, 'item.html', context)

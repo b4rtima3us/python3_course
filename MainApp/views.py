@@ -29,10 +29,7 @@ def render_about(request):
 
 def render_items(request):
     items = Item.objects.all()
-    context = {
-        'title': 'Items',
-        'items': items
-    }
+    context = {'items': items}
     return render(request, 'items.html', context)
 
 

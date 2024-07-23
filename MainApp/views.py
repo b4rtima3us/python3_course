@@ -43,10 +43,15 @@ def render_items(request):
 
 def render_item_by_id(request, item_id):
     item = next((i for i in items if i['id'] == item_id), None)
+    if item:
+        context = {
+            'title': 'Item',
+            'item': item
+        }
+        return render(request, 'item.html', context)
     context = {
-        'title': 'Items',
-        'item': item,
-        'item_id': item_id
+        'title': 'Error',
+        'item': f'Товар с id={item_id} не найден'
     }
-    return render(request, 'item.html', context)
+    return render(request, 'errors.html', context)
 

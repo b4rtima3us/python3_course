@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    {% include "menu.html"  %}
+</head>
+<body>
+    {% for item in items %}
+        {% if item.id == item_id %}
+            <p>{{ item.name }}: {{ item.quantity }}</p>
+        {% endif %}
+
+<!--    Товар с id={{item_id}} не найден-->
+    {% endfor %}
+    <a href="/items">Назад к списку товаров</a>
+</body>
+</html>

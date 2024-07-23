@@ -6,7 +6,15 @@
     {% include "menu.html"  %}
 </head>
 <body>
-    <p>{{ item.name }}: {{ item.count }}</p>
+    <p>
+        Наименование: {{ item.name }} <br>
+        {% if item.count == 0 %}
+            Кол-во: {{ item.count }} <br>
+        {% else %}
+            Кол-во: товара нет на складе <br>
+        {% endif %}
+        Бренд: {{ item.brand }}
+    </p>
     <a href="/items">Назад к списку товаров</a>
 </body>
 </html>

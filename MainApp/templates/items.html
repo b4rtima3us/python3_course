@@ -6,15 +6,17 @@
     {% include "menu.html"  %}
 </head>
 <body>
-    <h3>{{ title }}:</h3>
-    <ol type="1">
-        {% for item in items %}
-            {% if item.quantity == 0 %}
-                <li><a href="{{ item.id }}">{{ item.name }}</a>: Товар отсутствует</li>
-            {% else %}
-                <li><a href="{{ item.id }}">{{ item.name }}</a>: {{ item.count }}</li>
-            {% endif %}
-        {% endfor %}
-    </ol>
+    <table border="1">
+        <tr>
+            {% for item in items %}
+            <th>
+                <p>
+                <h2><a href="{{ item.id }}">{{ item.name }}</a></h2>
+                {{ item.description }}
+                </p>
+            </th>
+            {% endfor %}
+        </tr>
+    </table>
 </body>
 </html>

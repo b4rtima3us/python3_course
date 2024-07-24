@@ -22,9 +22,9 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.render_main),
-    path('about/', views.render_about),
-    path('items/', views.render_items),
+    path('', views.render_main, name='main'),
+    path('about/', views.render_about, name='about'),
+    path('items/', views.render_items, name='items'),
     path('items/<int:item_id>/', views.render_item_by_id, name='item_id'),
 ]
 

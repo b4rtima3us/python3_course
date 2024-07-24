@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}
 {{ item.name }}
 {% endblock %}
@@ -12,7 +12,13 @@
         {% else %}
             Кол-во: товара нет на складе <br>
         {% endif %}
-        Бренд: {{ item.brand }}
+        Бренд: {{ item.brand }} <br>
+        Доступные цвета: <br>
+        <ul>
+            {% for color in colors %}
+                <li style="color:{{ color.name }}"><span style="color:black">{{ color.name }}</span></li>
+            {% endfor %}
+        </ul>
     </p>
     <a href="{% url 'items' %}">Назад к списку товаров</a>
 {% endblock %}

@@ -28,10 +28,8 @@ def render_items(request):
 def render_item_by_id(request, item_id):
     try:
         item = Item.objects.get(id=item_id)
-        context = {
-            'title': 'Item',
-            'item': item
-        }
+        colors = item.colors.all()
+        context = {'item': item, 'colors': colors}
         return render(request, 'item.html', context)
     except ObjectDoesNotExist:
         context = {

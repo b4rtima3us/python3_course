@@ -3,7 +3,6 @@
 __pychache__/
 .idea/
 .vscode/
-*.json
 db.*
 *.sqlite3
 *.sqlite

@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}
+{{ item.name }}
+{% endblock %}
+
 {% block content %}
     <p>
         Наименование: {{ item.name }} <br>

@@ -3,7 +3,10 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-    <title>{{ title }}</title>
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
     {% block style %}
         <link rel="stylesheet" href="{% static 'css/items.css' %}">
     {% endblock %}

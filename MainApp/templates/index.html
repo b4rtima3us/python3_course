@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Main page</title>
-    {% include "menu.html"  %}
-</head>
-<body>
-<h1>Приветствую!</h1>
-<p>
-    Это главная страница сайта <br>
-    <h3><a href="/items">Cписок товаров</a></h3>
-</p>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Приветствую!</h1>
+    <p>
+        Это главная страница сайта <br>
+        <h3><a href="{% url 'items' %}">Cписок товаров</a></h3>
+    </p>
+{% endblock %}

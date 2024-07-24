@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-    {% include "menu.html"  %}
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
     <p>
         Наименование: {{ item.name }} <br>
         {% if item.count == 0 %}
@@ -15,6 +10,6 @@
         {% endif %}
         Бренд: {{ item.brand }}
     </p>
-    <a href="/items">Назад к списку товаров</a>
-</body>
-</html>
+    <a href="{% url 'items' %}">Назад к списку товаров</a>
+{% endblock %}
+

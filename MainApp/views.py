@@ -1,30 +1,22 @@
 from MainApp.models import Item
 from MainApp import settings
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
-
-# Create your views here.
 
 
 def render_main(request):
-    text = f"""
-    <h1>"Изучаем django"</h1>
-    <strong>Автор</strong>: <i>{settings.USER_FULL_NAME}</i>
-    """
     return render(request, 'index.html')
 
 
 def render_about(request):
-    text = f"""
-    <p>
-    Имя: {settings.USER_NAME} <br>
-    Отчество: {settings.USER_MIDDLE_NAME} <br>
-    Фамилия: {settings.USER_SURNAME} <br>
-    Телефон: {settings.USER_PHONE} <br>
-    Email: {settings.USER_EMAIL} <br>
-    <p>
-    """
-    return HttpResponse(text)
+    context = {
+        'name': settings.USER_NAME,
+        'middle_name': settings.USER_MIDDLE_NAME,
+        'surname': settings.USER_SURNAME,
+        'phone': settings.USER_PHONE,
+        'email': settings.USER_EMAIL
+    }
+    return render(request, 'about.html', context)
 
 
 def render_items(request):

@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-{{ item.name }}
+    {{ item.name }}
 {% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/color.css' %}">
+{% endblock %}
+
 
 {% block content %}
     <p>
@@ -12,11 +17,13 @@
         {% else %}
             Кол-во: товара нет на складе <br>
         {% endif %}
-        Бренд: {{ item.brand }} <br>
-        Доступные цвета: <br>
-        <ul>
+        Бренд: {{ item.brand }}
+        <h4>Доступные цвета: </h4>
+        <ul class="ul_no_mark">
             {% for color in colors %}
-                <li style="color:{{ color.name }}"><span style="color:black">{{ color.name }}</span></li>
+                <li>
+                    <span class="color-box" style="background-color: {{ color.name }};"></span> {{ color.name }}
+                </li>
             {% endfor %}
         </ul>
     </p>
